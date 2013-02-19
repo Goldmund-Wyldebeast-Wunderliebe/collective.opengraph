@@ -60,13 +60,13 @@ class ATMetatags(object):
                      ('og:image', self.image_url),
                      ('og:site_name', self.sitename),
                      ('og:description', self.description)])
-	if self.content_type:
+        if self.content_type:
             tags.update({'og:type' : self.content_type})
         if self.admins:
             tags.update({'fb:admins' : self.admins})
         if self.app_id:
             tags.update({'fb:app_id' : self.app_id})
-	return tags
+        return tags
 
     @property
     def image_url(self):
@@ -79,7 +79,7 @@ class ATMetatags(object):
         obj_url = context.absolute_url()
         if hasattr(context, 'getField'):
             field = self.context.getField('image')
-            if not field and HAS_LEADIMAGE:
+            if (not field or field.get_size(context) == 0) and HAS_LEADIMAGE:
                 field = context.getField(IMAGE_FIELD_NAME)
 
             if field and field.get_size(context) > 0:
