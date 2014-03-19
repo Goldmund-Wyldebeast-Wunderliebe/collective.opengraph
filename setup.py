@@ -28,6 +28,7 @@ setup(name='collective.opengraph',
       install_requires=[
           'setuptools',
           'ordereddict',
+          'zope.app.component',
           # -*- Extra requirements: -*-
       ],
       extras_require=dict(test=tests_require),
